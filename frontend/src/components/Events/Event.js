@@ -8,7 +8,7 @@ const Event = (props) => {
  
 
   const deleteHandler = async () => {
-    await axios.delete(`http://localhost:5000/events/${_id}`);
+    await axios.delete(`${process.env.REACT_APP_API_URL}/events/${_id}`);
     history("/events");
     window.location.reload(); 
   };

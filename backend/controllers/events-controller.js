@@ -97,14 +97,13 @@
 
 
 const Event = require("../model/event");
-
 const getAllevent = async (req, res, next) => {
     try {
         const events = await Event.find();
-        if (events.length === 0) {
-            return res.status(404).json({ message: "No events found" });
-        }
+
+        // even if empty, still return 200
         return res.status(200).json({ events });
+
     } catch (err) {
         console.error(err);
         return res.status(500).json({ message: "Internal Server Error" });

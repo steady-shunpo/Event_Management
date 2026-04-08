@@ -32,7 +32,7 @@ import {
   
     const sendRequest = async () => {
       await axios
-        .post("http://localhost:5000/events", {
+        .post(`${process.env.REACT_APP_API_URL}/events`, {
           name: String(inputs.name),
           club: String(inputs.club),
           description: String(inputs.description),
@@ -175,7 +175,7 @@ import {
 //       formData.append("image", inputs.image); // Append the selected image file
 
 //       await axios
-//           .post("http://localhost:5000/events", formData, {
+//           .post("${process.env.REACT_APP_API_URL}/events", formData, {
 //               headers: {
 //                   "Content-Type": "multipart/form-data", // Set appropriate headers for file upload
 //               },

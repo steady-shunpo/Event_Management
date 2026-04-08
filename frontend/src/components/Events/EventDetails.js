@@ -18,7 +18,7 @@ import {
     useEffect(() => {
       const fetchHandler = async () => {
         await axios
-          .get(`http://localhost:5000/events/${id}`)
+          .get(`${process.env.REACT_APP_API_URL}/events/${id}`)
           .then((res) => res.data)
           .then((data) => setInputs(data.event));
       };
@@ -27,7 +27,7 @@ import {
   
     const sendRequest = async () => {
       await axios
-        .put(`http://localhost:5000/events/${id}`, {
+        .put(`${process.env.REACT_APP_API_URL}/events/${id}`, {
           name: String(inputs.name),
           club: String(inputs.club),
           description: String(inputs.description),

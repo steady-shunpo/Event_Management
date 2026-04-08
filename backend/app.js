@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const router = require("./routes/event-routes");
@@ -10,15 +12,13 @@ app.use(cors());
 app.use("/events", router); // localhost:5000/events
 
 mongoose
-    .connect(
-        "mongodb://admin:anish123@ac-afbk2vi-shard-00-00.3u2eg94.mongodb.net:27017,ac-afbk2vi-shard-00-01.3u2eg94.mongodb.net:27017,ac-afbk2vi-shard-00-02.3u2eg94.mongodb.net:27017/?ssl=true&replicaSet=atlas-119wuu-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Cluster0"
-  )
+    .connect(process.env.MONGO_URI)
   .then(() => console.log("Connected To Database"))
   .then(() => {
-    app.listen(5000);
+    app.listen(process.env.PORT);
   })
   .catch((err) => console.log(err));
-
+// npm install --legacy-peer-deps
 // const express = require('express');
 // const mongoose = require('mongoose');
 // const cors = require('cors'); // Import the CORS middleware
